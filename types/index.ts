@@ -176,6 +176,7 @@ export interface TimeSlot {
   end: Date
   available: boolean
   staffId?: string
+  staffName?: string
 }
 
 export interface BookingFormData {

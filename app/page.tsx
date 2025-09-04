@@ -12,7 +12,7 @@ export default function Home() {
         {/* Background Video */}
         <div className='absolute inset-0'>
           <video
-            className='w-full h-full object-contain animate-in fade-in zoom-in-50 duration-1000'
+            className='w-full h-full object-cover object-top animate-in fade-in zoom-in-50 duration-1000'
             autoPlay
             muted
             loop
@@ -139,7 +139,7 @@ export default function Home() {
                     src='/images/SelectionsfromEssenseofAustraliaIMG1.avif'
                     alt='Essense of Australia Collection 1'
                     fill
-                    className='object-cover transition-transform duration-500 rounded-lg cursor-pointer'
+                    className='object-cover transition-transform duration-500 rounded-lg '
                   />
                   <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300'>
                     <p className='text-white text-sm font-medium'>
@@ -152,7 +152,7 @@ export default function Home() {
                     src='/images/SelectionsfromEssenseofAustraliaIMG2.avif'
                     alt='Essense of Australia Collection 2'
                     fill
-                    className='object-cover transition-transform duration-500 rounded-lg cursor-pointer'
+                    className='object-cover transition-transform duration-500 rounded-lg '
                   />
                   <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300'>
                     <p className='text-white text-sm font-medium'>
@@ -165,7 +165,7 @@ export default function Home() {
                     src='/images/SelectionsfromEssenseofAustraliaIMG3.avif'
                     alt='Essense of Australia Collection 3'
                     fill
-                    className='object-cover transition-transform duration-500 rounded-lg cursor-pointer'
+                    className='object-cover transition-transform duration-500 rounded-lg '
                   />
                   <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300'>
                     <p className='text-white text-sm font-medium'>
@@ -200,7 +200,7 @@ export default function Home() {
                     src='/images/SelectionsFromJesusPeiroIMG1.avif'
                     alt='Jesus Peiro Collection 1'
                     fill
-                    className='object-cover transition-transform duration-500 rounded-lg cursor-pointer'
+                    className='object-cover transition-transform duration-500 rounded-lg '
                   />
                   <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300'>
                     <p className='text-white text-sm font-medium'>
@@ -213,7 +213,7 @@ export default function Home() {
                     src='/images/SelectionsfromJesusPeiroIMG2.avif'
                     alt='Jesus Peiro Collection 2'
                     fill
-                    className='object-cover transition-transform duration-500 rounded-lg cursor-pointer'
+                    className='object-cover transition-transform duration-500 rounded-lg '
                   />
                   <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300'>
                     <p className='text-white text-sm font-medium'>
@@ -226,7 +226,7 @@ export default function Home() {
                     src='/images/SelectionsfromJesusPeiroIMG3.avif'
                     alt='Jesus Peiro Collection 3'
                     fill
-                    className='object-cover transition-transform duration-500 rounded-lg cursor-pointer'
+                    className='object-cover transition-transform duration-500 rounded-lg '
                   />
                   <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300'>
                     <p className='text-white text-sm font-medium'>

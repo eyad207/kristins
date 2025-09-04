@@ -196,3 +196,26 @@ export const isBusinessOpen = (date: Date = new Date()): boolean => {
 
   return currentTime >= todayHours.open && currentTime <= todayHours.close
 }
+
+export const generateCalendarDays = (currentMonth: Date): Date[] => {
+  const year = currentMonth.getFullYear()
+  const month = currentMonth.getMonth()
+
+  // Get first day of month and adjust for Monday start (0 = Monday)
+  const firstDay = new Date(year, month, 1)
+
+  const startDate = new Date(firstDay)
+  const dayOfWeek = (firstDay.getDay() + 6) % 7 // Convert to Monday = 0
+  startDate.setDate(startDate.getDate() - dayOfWeek)
+
+  const days: Date[] = []
+  const currentDate = new Date(startDate)
+
+  // Generate 6 weeks (42 days) to fill calendar grid
+  for (let i = 0; i < 42; i++) {
+    days.push(new Date(currentDate))
+    currentDate.setDate(currentDate.getDate() + 1)
+  }
+
+  return days
+}

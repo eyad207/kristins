@@ -91,21 +91,21 @@ export function Footer() {
                   '@',
                   ''
                 )}`}
-                className='text-gray-400 hover:text-brand-gold transition-all duration-300 transform hover:scale-125 hover:-translate-y-1 group'
+                className='text-gray-400 hover:text-brand-gold transition-colors'
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 <span className='sr-only'>Instagram</span>
-                <Instagram className='h-6 w-6 transition-transform duration-300 group-hover:rotate-12' />
+                <Instagram className='h-6 w-6' />
               </a>
               <a
                 href={`https://facebook.com/${CONTACT_INFO.facebook}`}
-                className='text-gray-400 hover:text-brand-gold transition-all duration-300 transform hover:scale-125 hover:-translate-y-1 group'
+                className='text-gray-400 hover:text-brand-gold transition-colors'
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 <span className='sr-only'>Facebook</span>
-                <Facebook className='h-6 w-6 transition-transform duration-300 group-hover:rotate-12' />
+                <Facebook className='h-6 w-6' />
               </a>
             </div>
           </div>
@@ -122,10 +122,9 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className='text-sm leading-6 text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2 relative group'
+                        className='text-sm leading-6 text-gray-300 hover:text-white transition-colors'
                       >
-                        <span className='relative z-10'>{item.name}</span>
-                        <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300'></span>
+                        {item.name}
                       </Link>
                     </li>
                   ))}
@@ -140,10 +139,9 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className='text-sm leading-6 text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2 relative group'
+                        className='text-sm leading-6 text-gray-300 hover:text-white transition-colors'
                       >
-                        <span className='relative z-10'>{item.name}</span>
-                        <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300'></span>
+                        {item.name}
                       </Link>
                     </li>
                   ))}
@@ -160,10 +158,9 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className='text-sm leading-6 text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2 relative group'
+                        className='text-sm leading-6 text-gray-300 hover:text-white transition-colors'
                       >
-                        <span className='relative z-10'>{item.name}</span>
-                        <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300'></span>
+                        {item.name}
                       </Link>
                     </li>
                   ))}
@@ -178,10 +175,9 @@ export function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className='text-sm leading-6 text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2 relative group'
+                        className='text-sm leading-6 text-gray-300 hover:text-white transition-colors'
                       >
-                        <span className='relative z-10'>{item.name}</span>
-                        <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-300'></span>
+                        {item.name}
                       </Link>
                     </li>
                   ))}
@@ -223,10 +219,9 @@ export function Footer() {
             <div className='mt-4 sm:mt-0'>
               <Link
                 href={ROUTES.booking}
-                className='text-sm font-semibold text-brand-gold hover:text-brand-gold/80 transition-all duration-300 hover:translate-x-2 relative group'
+                className='text-sm font-semibold text-brand-gold hover:text-brand-gold/80 transition-colors'
               >
-                <span className='relative z-10'>Book prøvetime →</span>
-                <span className='absolute inset-0 bg-brand-gold/10 rounded px-2 py-1 scale-0 group-hover:scale-100 transition-transform duration-200'></span>
+                Book prøvetime →
               </Link>
             </div>
           </div>

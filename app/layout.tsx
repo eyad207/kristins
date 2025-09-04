@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { AuthProvider } from '@/contexts/AuthContext'
 import { SITE_CONFIG, SEO_DEFAULTS } from '@/lib/constants'
 
 const inter = Inter({
@@ -79,11 +80,13 @@ export default function RootLayout({
   return (
     <html lang='no' className={`${inter.variable} ${playfair.variable}`}>
       <body className='font-sans antialiased'>
-        <div className='min-h-screen flex flex-col'>
-          <Header />
-          <main className='flex-grow'>{children}</main>
-          <Footer />
-        </div>
+        <AuthProvider>
+          <div className='min-h-screen flex flex-col'>
+            <Header />
+            <main className='flex-grow'>{children}</main>
+            <Footer />
+          </div>
+        </AuthProvider>
       </body>
     </html>
   )

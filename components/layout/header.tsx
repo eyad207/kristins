@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, LogIn, LogOut, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useAuth } from '@/contexts/AuthContext'
 import { ROUTES, CONTACT_INFO } from '@/lib/constants'
 
 const navigation = [
@@ -17,11 +18,12 @@ const navigation = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { user, isAuthenticated, isAdmin, logout } = useAuth()
 
   return (
     <header className='bg-white shadow-sm sticky top-0 z-50'>
       <nav
-        className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'
+        className='mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8'
         aria-label='Global'
       >
         {/* Logo */}
@@ -56,16 +58,19 @@ export function Header() {
             />
           </button>
         </div>
+
         {/* Desktop navigation */}
-        <div className='hidden lg:flex lg:gap-x-6'>
+        <div className='hidden lg:flex lg:gap-x-10 mx-5'>
           {navigation.map((item, index) => (
             <Link
               key={item.name}
               href={item.href}
-              className='relative group overflow-hidden p-1'
+              className='relative group p-1'
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <span className='relative z-10 font-semibold'>{item.name}</span>
+              <span className='relative z-10 font-semibold whitespace-nowrap'>
+                {item.name}
+              </span>
               <span className='absolute bottom-0 left-0 w-0 h-[2px] bg-black group-hover:w-full transition-all duration-300 ease-out'></span>
             </Link>
           ))}
@@ -73,15 +78,45 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4'>
-          <Link href={`tel:${CONTACT_INFO.phone}`}>
-            <Button variant='outline' size='sm'>
-              <Phone className='h-4 w-4 transition-transform duration-300 group-hover:rotate-12' />
-              Ring oss
-            </Button>
-          </Link>
-          <Link href={ROUTES.booking}>
-            <Button size='sm'>Book prøvetime</Button>
-          </Link>
+          {isAuthenticated ? (
+            <div className='flex items-center gap-x-3'>
+              {isAdmin && (
+                <Link href='/admin'>
+                  <Button
+                    variant='outline'
+                    size='sm'
+                    className='text-gray-600 hover:text-gray-900'
+                  >
+                    Admin
+                  </Button>
+                </Link>
+              )}
+              <div className='flex items-center gap-x-2'>
+                <User className='h-4 w-4 text-gray-600' />
+                <span className='text-sm text-gray-700'>{user?.name}</span>
+              </div>
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={logout}
+                className='text-gray-600 hover:text-gray-900'
+              >
+                <LogOut className='h-4 w-4 mr-1' />
+                Logg ut
+              </Button>
+            </div>
+          ) : (
+            <Link href='/login'>
+              <Button
+                variant='outline'
+                size='sm'
+                className='text-gray-600 hover:text-gray-900'
+              >
+                <LogIn className='h-4 w-4 mr-1' />
+                Logg inn
+              </Button>
+            </Link>
+          )}
         </div>
       </nav>
 
@@ -131,6 +166,47 @@ export function Header() {
                       <Phone className='h-4 w-4 m-1' /> Ring oss
                     </Button>
                   </Link>
+
+                  {isAuthenticated ? (
+                    <>
+                      {isAdmin && (
+                        <Link href='/admin'>
+                          <Button
+                            variant='outline'
+                            className='w-full gap-2 transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom text-gray-600'
+                            style={{ animationDelay: '850ms' }}
+                          >
+                            Admin Panel
+                          </Button>
+                        </Link>
+                      )}
+                      <div className='flex items-center justify-center gap-2 py-2'>
+                        <User className='h-4 w-4 text-gray-600' />
+                        <span className='text-sm text-gray-700'>
+                          {user?.name}
+                        </span>
+                      </div>
+                      <Button
+                        variant='outline'
+                        onClick={logout}
+                        className='w-full gap-2 transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom text-gray-600'
+                        style={{ animationDelay: '875ms' }}
+                      >
+                        <LogOut className='h-4 w-4' /> Logg ut
+                      </Button>
+                    </>
+                  ) : (
+                    <Link href='/login'>
+                      <Button
+                        variant='outline'
+                        className='w-full gap-2 transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom text-gray-600'
+                        style={{ animationDelay: '850ms' }}
+                      >
+                        <LogIn className='h-4 w-4' /> Logg inn
+                      </Button>
+                    </Link>
+                  )}
+
                   <Link href={ROUTES.booking}>
                     <Button
                       className='w-full bg-brand-gold hover:bg-brand-gold/90 text-white transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom'
