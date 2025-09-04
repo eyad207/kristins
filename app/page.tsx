@@ -8,11 +8,11 @@ export default function Home() {
   return (
     <div className='bg-white'>
       {/* Hero Section with Video */}
-      <section className='relative overflow-hidden bg-gradient-to-br from-brand-cream to-brand-rose/20'>
+      <section className='relative overflow-hidden bg-gradient-to-br from-brand-cream to-brand-rose/20 min-h-[80vh] lg:min-h-[100vh]'>
         {/* Background Video */}
         <div className='absolute inset-0'>
           <video
-            className='w-full h-full object-cover animate-in fade-in zoom-in-50 duration-1000'
+            className='w-full h-full object-contain animate-in fade-in zoom-in-50 duration-1000'
             autoPlay
             muted
             loop
@@ -21,6 +21,7 @@ export default function Home() {
             <source src='/videos/file.mp4' type='video/mp4' />
             Your browser does not support the video tag.
           </video>
+
           <div className='absolute inset-0 bg-white/60 animate-in fade-in duration-1500'></div>
         </div>
 
