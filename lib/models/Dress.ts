@@ -144,7 +144,7 @@ const dressSchema = new Schema<DressDocument>(
 )
 
 // Indexes for performance
-dressSchema.index({ slug: 1 })
+// slug already has a unique index; avoid duplicate declaration
 dressSchema.index({ designer: 1 })
 dressSchema.index({ silhouette: 1 })
 dressSchema.index({ status: 1 })

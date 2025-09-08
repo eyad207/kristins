@@ -67,7 +67,7 @@ const pageSchema = new Schema<PageDocument>(
 )
 
 // Indexes for performance
-pageSchema.index({ slug: 1 })
+// slug already has a unique index via schema path definition
 pageSchema.index({ isPublished: 1 })
 pageSchema.index({ publishedAt: -1 })
 

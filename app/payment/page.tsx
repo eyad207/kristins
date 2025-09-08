@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { PaymentMethods } from '@/components/payment'
 
@@ -19,7 +19,7 @@ interface AppointmentData {
   totalAmount: number
 }
 
-export default function PaymentPage() {
+function PaymentInner() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const appointmentId = searchParams.get('id')
@@ -174,5 +174,19 @@ export default function PaymentPage() {
         </div>
       </div>
     </main>
+  )
+}
+
+export default function PaymentPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className='min-h-screen flex items-center justify-center bg-gradient-to-b from-cream to-white'>
+          <div className='text-sm text-gray-600'>Laster betaling...</div>
+        </main>
+      }
+    >
+      <PaymentInner />
+    </Suspense>
   )
 }

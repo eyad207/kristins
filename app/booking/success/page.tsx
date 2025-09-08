@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { formatDate, formatCurrency } from '@/lib/utils'
 import type { Appointment } from '@/types'
 
-export default function BookingSuccessPage() {
+function SuccessInner() {
   const searchParams = useSearchParams()
   const appointmentId = searchParams.get('appointmentId')
   const [appointment, setAppointment] = useState<Appointment | null>(null)
@@ -228,5 +228,19 @@ export default function BookingSuccessPage() {
         </div>
       </div>
     </main>
+  )
+}
+
+export default function BookingSuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className='min-h-screen flex items-center justify-center bg-gradient-to-b from-cream to-white'>
+          <div className='text-center text-sm text-gray-600'>Laster...</div>
+        </main>
+      }
+    >
+      <SuccessInner />
+    </Suspense>
   )
 }

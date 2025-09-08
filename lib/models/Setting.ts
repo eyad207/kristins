@@ -41,7 +41,7 @@ const settingSchema = new Schema<SettingDocument>(
 )
 
 // Indexes for performance
-settingSchema.index({ key: 1 })
+// key already has a unique index from schema path definition
 
 // Static method to get setting by key
 settingSchema.statics.getByKey = async function (key: string) {

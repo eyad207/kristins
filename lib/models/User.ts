@@ -56,7 +56,7 @@ const userSchema = new Schema<UserDocument>(
 )
 
 // Indexes for performance
-userSchema.index({ email: 1 })
+// email already has a unique index via `unique: true`, so we avoid declaring it again
 userSchema.index({ role: 1 })
 userSchema.index({ createdAt: -1 })
 

@@ -96,7 +96,7 @@ const serviceSchema = new Schema<ServiceDocument>(
 )
 
 // Indexes for performance
-serviceSchema.index({ slug: 1 })
+// slug already has a unique index via schema path definition
 serviceSchema.index({ category: 1 })
 serviceSchema.index({ isActive: 1 })
 serviceSchema.index({ price: 1 })

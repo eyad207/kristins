@@ -118,7 +118,7 @@ const staffSchema = new Schema<StaffDocument>(
 )
 
 // Indexes for performance
-staffSchema.index({ email: 1 })
+// email already has a unique index; avoid duplicate declaration
 staffSchema.index({ role: 1 })
 staffSchema.index({ isActive: 1 })
 

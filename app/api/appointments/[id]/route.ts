@@ -2,14 +2,16 @@ import { NextRequest, NextResponse } from 'next/server'
 import connectDB from '@/lib/database/connection'
 import Appointment from '@/lib/models/Appointment'
 
+// Updated signature to satisfy Next.js 15 route validator (params as Promise)
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB()
+    const { id } = await context.params
 
-    const appointment = await Appointment.findById(params.id)
+    const appointment = await Appointment.findById(id)
       .populate('service')
       .populate('customer')
       .populate('staff')
