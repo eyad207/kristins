@@ -231,7 +231,7 @@ Test availability endpoint:
 curl "http://localhost:3000/api/availability?serviceId=SERVICE_ID&date=2025-09-15"
 ```
 
-Test booking endpoint:
+Ttest booking endpoint:
 
 ```bash
 curl -X POST http://localhost:3000/api/book \
