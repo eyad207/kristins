@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X, Phone, LogIn, LogOut, User } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/contexts/AuthContext'
 import { ROUTES, CONTACT_INFO } from '@/lib/constants'
+import { usePathname } from 'next/navigation'
 
 const navigation = [
   { name: 'Hjem', href: ROUTES.home },
@@ -19,6 +20,15 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { user, isAuthenticated, isAdmin, logout } = useAuth()
+  const pathname = usePathname()
+
+  // Close mobile menu automatically on route change
+  useEffect(() => {
+    if (mobileMenuOpen) setMobileMenuOpen(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname])
+
+  const closeMenu = () => setMobileMenuOpen(false)
 
   return (
     <header className='bg-white shadow-sm sticky top-0 z-50'>
@@ -150,14 +160,14 @@ export function Header() {
                       href={item.href}
                       className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 transition-all duration-300 hover:translate-x-2 hover:text-brand-gold animate-in slide-in-from-right'
                       style={{ animationDelay: `${index * 100 + 100}ms` }}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={closeMenu}
                     >
                       {item.name}
                     </Link>
                   ))}
                 </div>
                 <div className='py-6 space-y-4'>
-                  <Link href={`tel:${CONTACT_INFO.phone}`}>
+                  <Link href={`tel:${CONTACT_INFO.phone}`} onClick={closeMenu}>
                     <Button
                       variant='outline'
                       className='w-full gap-2 transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom'
@@ -170,7 +180,7 @@ export function Header() {
                   {isAuthenticated ? (
                     <>
                       {isAdmin && (
-                        <Link href='/admin'>
+                        <Link href='/admin' onClick={closeMenu}>
                           <Button
                             variant='outline'
                             className='w-full gap-2 transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom text-gray-600'
@@ -188,7 +198,10 @@ export function Header() {
                       </div>
                       <Button
                         variant='outline'
-                        onClick={logout}
+                        onClick={() => {
+                          logout()
+                          closeMenu()
+                        }}
                         className='w-full gap-2 transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom text-gray-600'
                         style={{ animationDelay: '875ms' }}
                       >
@@ -196,7 +209,7 @@ export function Header() {
                       </Button>
                     </>
                   ) : (
-                    <Link href='/login'>
+                    <Link href='/login' onClick={closeMenu}>
                       <Button
                         variant='outline'
                         className='w-full gap-2 transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom text-gray-600'
@@ -207,9 +220,9 @@ export function Header() {
                     </Link>
                   )}
 
-                  <Link href={ROUTES.booking}>
+                  <Link href={ROUTES.booking} onClick={closeMenu}>
                     <Button
-                      className='w-full bg-brand-gold hover:bg-brand-gold/90 text-white transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom'
+                      className='w-full bg-brand-gold hover:bg-brand-gold/90 text-black transform transition-all duration-300 hover:scale-105 animate-in slide-in-from-bottom'
                       style={{ animationDelay: '900ms' }}
                     >
                       Book prøvetime
